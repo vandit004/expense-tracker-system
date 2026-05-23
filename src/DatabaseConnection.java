@@ -1,6 +1,7 @@
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
+import java.util.Scanner;
 
 public class DatabaseConnection {
 
@@ -34,13 +35,30 @@ public class DatabaseConnection {
 
     public static void main(String[] args) {
 
-    Expense expense =
-            new Expense(
-                    "Food",
-                    250,
-                    "Dining",
-                    Date.valueOf("2026-05-24")
-            );
+    Scanner sc = new Scanner(System.in);
+
+System.out.print("Enter category: ");
+String category = sc.nextLine();
+
+System.out.print("Enter amount: ");
+double amount = sc.nextDouble();
+sc.nextLine();
+
+System.out.print("Enter description: ");
+String description = sc.nextLine();
+
+System.out.print("Enter date (YYYY-MM-DD): ");
+String dateInput = sc.nextLine();
+
+Date date = Date.valueOf(dateInput);
+
+Expense expense =
+        new Expense(
+                category,
+                amount,
+                description,
+                date
+        );
 
     ExpenseService service =
             new ExpenseService();
