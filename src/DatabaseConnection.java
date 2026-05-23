@@ -1,4 +1,5 @@
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 
 public class DatabaseConnection {
@@ -32,6 +33,18 @@ public class DatabaseConnection {
     }
 
     public static void main(String[] args) {
-        connect();
-    }
+
+    Expense expense =
+            new Expense(
+                    "Food",
+                    250,
+                    "Dining",
+                    Date.valueOf("2026-05-24")
+            );
+
+    ExpenseService service =
+            new ExpenseService();
+
+    service.addExpense(expense);
+}
 }
