@@ -1,6 +1,8 @@
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
-
+import java.sql.ResultSet;
+ 
 public class ExpenseService {
 
     public void addExpense(Expense expense) {
@@ -31,5 +33,43 @@ public class ExpenseService {
             System.out.println("Failed to add expense!");
             e.printStackTrace();
         }
+    }
+
+
+    public void viewExpenses() {
+
+        try{
+
+            Connection connection = DatabaseConnection.connect();
+
+            String query = "SELECT * FROM expenses";
+            
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()) {
+
+                int id  = resultSet.getInt("id");
+                String title = resultSet.getString("title");
+                double amount = resultSet.getDouble("amount");
+                String category = resultSet.getString("category");
+                Date expenseDate = resultSet.getDate("expense_date");
+
+                System.out.println("ID" + id);
+                System.out.println("Title" + title);
+                System.out.println("Amount" + amount);
+                System.out.println("Category "+ category);
+                System.out.println("Date"+ expenseDate);
+
+                System.out.println("-------------------");
+            }
+
+         
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
     }
 }

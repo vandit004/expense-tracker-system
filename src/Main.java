@@ -33,5 +33,7 @@ Expense expense =
             new ExpenseService();
 
     service.addExpense(expense);
+
+    service.viewExpenses();
 }
 }
