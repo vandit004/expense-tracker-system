@@ -55,11 +55,11 @@ public class ExpenseService {
                 String category = resultSet.getString("category");
                 Date expenseDate = resultSet.getDate("expense_date");
 
-                System.out.println("ID" + id);
-                System.out.println("Title" + title);
-                System.out.println("Amount" + amount);
-                System.out.println("Category "+ category);
-                System.out.println("Date"+ expenseDate);
+                System.out.println("ID:" + id);
+                System.out.println("Title:" + title);
+                System.out.println("Amount:" + amount);
+                System.out.println("Category: "+ category);
+                System.out.println("Date:"+ expenseDate);
 
                 System.out.println("-------------------");
             }

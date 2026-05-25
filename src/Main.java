@@ -6,34 +6,71 @@ public class Main {
 
     Scanner sc = new Scanner(System.in);
 
-System.out.print("Enter category: ");
-String category = sc.nextLine();
+      ExpenseService service =
+            new ExpenseService();  
 
-System.out.print("Enter amount: ");
-double amount = sc.nextDouble();
-sc.nextLine();
 
-System.out.print("Enter description: ");
-String description = sc.nextLine();
+    while(true){
 
-System.out.print("Enter date (YYYY-MM-DD): ");
-String dateInput = sc.nextLine();
+        System.out.println("\n===== Expense Tracker Menu =====");
+        System.out.println("1. ADD expenses");
+        System.out.println("2. VIEW expenses");
+        System.out.println("3. Exit     ");
 
-Date date = Date.valueOf(dateInput);
+        System.out.println("Enter your choice: ");
 
-Expense expense =
-        new Expense(
-                category,
-                amount,
-                description,
-                date
-        );
+        int choice = sc.nextInt();
 
-    ExpenseService service =
-            new ExpenseService();
+        sc.nextLine();
 
-    service.addExpense(expense);
+        switch (choice) {
+                case 1:
 
-    service.viewExpenses();
+                        System.out.println("ADD Expense selected");
+
+                        System.out.print("Enter category: ");
+                        String category = sc.nextLine();
+
+                        System.out.print("Enter amount: ");
+                        double amount = sc.nextDouble();
+                        sc.nextLine();
+
+                        System.out.print("Enter description: ");
+                        String description = sc.nextLine();
+
+                        System.out.print("Enter date (YYYY-MM-DD): ");
+                        String dateInput = sc.nextLine();
+
+                        Date date = Date.valueOf(dateInput);
+
+                        Expense expense =
+                        new Expense(
+                                category,
+                                 amount,
+                                 description,
+                                 date
+                                );
+                        
+                            
+                        break;
+                       
+        
+                case 2:
+                        service.viewExpenses();
+                        break;  
+                
+                case 3: 
+                        System.out.println("Exiting Application");
+                        System.exit(0);
+                
+                default: 
+                         System.out.println("Invalid choice");
+                         break;
+        }
+    }        
+
+    //service.addExpense(expense);
+
+    //service.viewExpenses();
 }
 }
