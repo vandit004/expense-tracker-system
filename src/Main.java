@@ -15,7 +15,8 @@ public class Main {
         System.out.println("\n===== Expense Tracker Menu =====");
         System.out.println("1. ADD expenses");
         System.out.println("2. VIEW expenses");
-        System.out.println("3. Exit     ");
+        System.out.println("3. DELETE expenses");
+        System.out.println("4. Exit     ");
 
         System.out.println("Enter your choice: ");
 
@@ -59,7 +60,23 @@ public class Main {
                         service.viewExpenses();
                         break;  
                 
-                case 3: 
+                case 3:
+                        System.out.println("n====== Current Expenses =====");
+
+                        service.viewExpenses();
+
+                         System.out.println("Enter Expense ID to delete");
+
+                        int id = sc.nextInt();
+
+                        sc.nextLine();
+                        
+                        service.deleteExpense(id);
+
+                        
+                        break;
+        
+                case 4: 
                         System.out.println("Exiting Application");
                         System.exit(0);
                 

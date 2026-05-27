@@ -72,4 +72,30 @@ public class ExpenseService {
 
 
     }
+
+    public void deleteExpense(int id ) {
+
+        try {
+            
+            Connection connection = DatabaseConnection.connect();
+
+            String query = "Delete FROM expenses WHERE id = ?";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+
+            preparedStatement.setInt(1, id);
+
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            if(rowsAffected > 0){
+                System.out.println("Expense Deleted Sucessfully");
+
+            }else{
+                System.out.println("Expense ID not found");
+            }
+
+                }catch (Exception e){
+            e.printStackTrace();    
+        }
+    }
 }
